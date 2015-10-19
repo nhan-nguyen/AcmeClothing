@@ -10,6 +10,7 @@ using AcmeClothing.Models;
 
 namespace AcmeClothing.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductsController : Controller
     {
         private StoreContext db = new StoreContext();
@@ -22,6 +23,7 @@ namespace AcmeClothing.Controllers
         }
 
         // GET: Products/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -62,7 +64,6 @@ namespace AcmeClothing.Controllers
         }
 
         // GET: Products/Edit/5
-        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -96,7 +97,6 @@ namespace AcmeClothing.Controllers
         }
 
         // GET: Products/Delete/5
-        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
